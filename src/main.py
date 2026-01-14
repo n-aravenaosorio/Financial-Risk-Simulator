@@ -1,8 +1,7 @@
 import sys
 import os
 
-# --- CORRECCIÓN DE RUTA (PATH FIX) ---
-# Esto le dice a Python: "La raíz del proyecto está una carpeta atrás de este archivo"
+# CORRECCIÓN
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import streamlit as st
