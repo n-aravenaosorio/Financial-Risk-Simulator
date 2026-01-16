@@ -15,7 +15,7 @@
 ## 📸 Resultados
 
 ### 1. Dashboard de Control (Power BI)
-Diseñé este tablero conectándolo directamente a la base de datos que. Me permite monitorear el riesgo de mercado en tiempo real, donde configuré semáforos para identificar activos peligrosos (Rojo) frente a los seguros (Verde).
+Diseñé este tablero conectándolo directamente a la base de datos, lo que me permite monitorear el riesgo de mercado en tiempo real, donde configuré semáforos para identificar activos peligrosos (Rojo) frente a los seguros (Verde).
 
 ▶️ **Dale Play para ver el funcionamiento del reporte:**
 <img src="dashboard-power-bi.gif" width="100%" alt="Dashboard Power BI Final">
