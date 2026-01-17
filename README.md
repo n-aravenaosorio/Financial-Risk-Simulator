@@ -44,7 +44,7 @@ Como se ve en el código, definí las clases `Asset`, `MarketData` y `Simulation
 En este script implementé toda la lógica de ingesta (ETL). Utilicé la librería `yfinance` para conectarme a la API y descargar los precios.
 Dentro de la función `save_market_data` el sistema verifica si el activo ya existe para evitar duplicados. También incluí limpieza de datos, en donde debí eliminar los valores nulos de la data descargada antes de hacer el *commit* masivo a la base de datos, para no sobrecargar el repositorio con información innecesaria.
 
-<img src="code-extract-py.png" width="100%" alt="Código Extracción ETL">
+<img src="extract2.png" width="100%" alt="Código Extracción ETL">
 
 ---
 
@@ -52,7 +52,7 @@ Dentro de la función `save_market_data` el sistema verifica si el activo ya exi
 Este es el cerebro matemático del proyecto. Tomé la decisión de usar **NumPy** para vectorizar las operaciones matemáticas, logrando que el sistema sea mucho más rápido que usar bucles tradicionales.
 En la función `run_simulation`, implementé la fórmula del **Movimiento Browniano Geométrico**. Calculo los retornos logarítmicos y genero matrices de miles de escenarios futuros. Finalmente, esta el cálculo estadístico automático del **VaR 95%**, **VaR 99%** y el **Expected Shortfall (ES)**, guardando estos resultados específicos para el análisis posterior.
 
-<img src="code-simulation-py.png" width="100%" alt="Código Motor Simulación">
+<img src="simulation2.png" width="100%" alt="Código Motor Simulación">
 
 ---
 
