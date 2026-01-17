@@ -52,7 +52,7 @@ Dentro de la función `save_market_data` el sistema verifica si el activo ya exi
 Este es el cerebro matemático del proyecto. Tomé la decisión de usar **NumPy** para vectorizar las operaciones matemáticas, logrando que el sistema sea mucho más rápido que usar bucles tradicionales.
 En la función `run_simulation`, implementé la fórmula del **Movimiento Browniano Geométrico**. Calculo los retornos logarítmicos y genero matrices de miles de escenarios futuros. Finalmente, esta el cálculo estadístico automático del **VaR 95%**, **VaR 99%** y el **Expected Shortfall (ES)**, guardando estos resultados específicos para el análisis posterior.
 
-<img src="simulation2.png" width="100%" alt="Código Motor Simulación">
+<img src="simulation 2.png" width="100%" alt="Código Motor Simulación">
 
 ---
 
