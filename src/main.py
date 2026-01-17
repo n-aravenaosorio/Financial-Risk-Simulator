@@ -74,7 +74,7 @@ if selected_ticker:
         with col3:
             st.write("")
             st.write("") 
-            run_btn = st.button("🚀 Ejecutar Simulación", type="primary")
+            run_btn = st.button("Ejecutar Simulación", type="primary")
 
         if run_btn:
             with st.spinner("Calculando miles de escenarios futuros..."):
