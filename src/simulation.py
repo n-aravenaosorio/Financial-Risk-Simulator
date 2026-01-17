@@ -9,18 +9,18 @@ class MonteCarloEngine:
         self.session = db_session
 
     def run_simulation(self, ticker: str, days_ahead: int = 252, simulations: int = 1000):
-        print(f"\n🎲 Iniciando simulación Monte Carlo para {ticker} ({simulations} escenarios)...")
+        print(f"\n Iniciando simulación Monte Carlo para {ticker} ({simulations} escenarios)...")
         
         asset = self.session.query(Asset).filter_by(symbol=ticker).first()
         if not asset:
-            print(f"❌ Error: El activo {ticker} no existe en la BD. Ejecuta el ETL primero.")
+            print(f"Error: El activo {ticker} no existe en la BD. Ejecuta el ETL primero.")
             return
 
         query = self.session.query(MarketData.close).filter_by(asset_id=asset.id).order_by(MarketData.date)
         df = pd.read_sql(query.statement, self.session.bind)
         
         if df.empty:
-            print("❌ Datos insuficientes para simular.")
+            print("Datos insuficientes para simular.")
             return
 
         df['log_ret'] = np.log(df['close'] / df['close'].shift(1))
@@ -29,7 +29,7 @@ class MonteCarloEngine:
         sigma = df['log_ret'].std()
         last_price = df['close'].iloc[-1]
 
-        print(f"📊 Estadísticas: Último Precio=${last_price:.2f}, Mu={mu:.6f}, Sigma={sigma:.6f}")
+        print(f" Estadísticas: Último Precio=${last_price:.2f}, Mu={mu:.6f}, Sigma={sigma:.6f}")
 
         random_shocks = np.random.normal(loc=mu, scale=sigma, size=(days_ahead, simulations))
         
@@ -50,7 +50,7 @@ class MonteCarloEngine:
 
         es_95 = last_price - final_prices_sorted[final_prices_sorted <= percentile_5].mean()
 
-        print(f"📉 Resultados de Riesgo (a {days_ahead} días):")
+        print(f" Resultados de Riesgo (a {days_ahead} días):")
         print(f"   VaR 95%: ${var_95:.2f}")
         print(f"   VaR 99%: ${var_99:.2f}")
         print(f"   ES 95%:  ${es_95:.2f}")
@@ -64,7 +64,7 @@ class MonteCarloEngine:
         )
         self.session.add(new_sim)
         self.session.commit()
-        print("✅ Resultados guardados en la base de datos.")
+        print("Resultados guardados en la base de datos.")
 
 if __name__ == "__main__":
     db = SessionLocal()
